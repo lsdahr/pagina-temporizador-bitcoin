@@ -1,0 +1,20 @@
+<h1>{{name}}</h1>
+
+<div class="timer"> ({{timer.getCount()}}s) <br>
+<button (click)="timer.start(1000)">Iniciar</button>
+<button (click)="timer.stop()">Parar</button>
+</div>
+
+<h2>BitCoin$ <button class="btn2" (click)="updateBitCoinRates()">Atualizar</button> </h2> 
+<table border="1">
+    <tr>
+      <th>Data / Hora</th>
+      <th>$ USD</th>
+      <th>R$ BRL</th>
+    </tr>
+    <tr *ngFor="let response of this.bitcoinService.updateList">
+      <td>{{response.time.updated}}</td>
+      <td>{{response.bpi.USD.rate}}</td>
+      <td>{{response.bpi.BRL.rate}}</td>
+    </tr>
+  </table>
